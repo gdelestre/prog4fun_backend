@@ -19,6 +19,9 @@ public class Outil {
 
     private String nom;
 
+    @Column(name = "img_url")
+    private String imgUrl;
+
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "id_langage", nullable = false)

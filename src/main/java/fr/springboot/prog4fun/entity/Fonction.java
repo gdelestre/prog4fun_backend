@@ -28,4 +28,6 @@ public class Fonction {
     @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "actionPourFonction")
     private Set<Action> mesActions;
+
+
 }
