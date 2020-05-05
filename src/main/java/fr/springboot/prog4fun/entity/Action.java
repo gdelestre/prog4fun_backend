@@ -1,15 +1,14 @@
 package fr.springboot.prog4fun.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
-
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Data
 @Table(name = "action")
-public class Action {
+public class Action implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,7 +18,7 @@ public class Action {
     private int numEtape;
 
     @Column(name = "nom_fichier")
-    private String nom_fichier;
+    private String nomFichier;
 
     private String detail;
 
@@ -35,5 +34,4 @@ public class Action {
     @ManyToOne
     @JoinColumn(name = "id_outil", nullable = false)
     private Outil actionPourOutil;
-
 }

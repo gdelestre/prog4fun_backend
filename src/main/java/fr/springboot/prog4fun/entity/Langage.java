@@ -3,14 +3,14 @@ package fr.springboot.prog4fun.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
-
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Data
 @Table(name = "langage")
-public class Langage {
+public class Langage implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,14 +18,17 @@ public class Langage {
 
     private String nom;
 
-    private String utilisation;
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "id_utilisation", nullable = false)
+    private Utilisation utilisationDuLangage;
 
     @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "outilDeLangage")
-    private Set<Outil> lesOutils;
+    @OneToMany(mappedBy = "outilDeLangage", cascade = CascadeType.ALL)
+    private Set<Outil> mesOutils;
 
     @JsonManagedReference
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "commandePourLangage")
-    private Set<Commande> lesCommandes;
+    @OneToMany(mappedBy = "commandePourLangage")
+    private Set<Commande> mesCommandes;
 
 }
