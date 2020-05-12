@@ -26,15 +26,16 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
         HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.DELETE, HttpMethod.POST};
 
-        //Désactivation des méthodes HTTP pour Langage : Put, Post and Delete
+        //Désactivation des méthodes HTTP pour Action : Put, Post and Delete
         config.getExposureConfiguration()
-                .forDomainType(Langage.class)
+                .forDomainType(Action.class)
                 .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)))
                 .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
 
-        //Désactivation des méthodes HTTP pour Outil : Put, Post and Delete
+
+        //Désactivation des méthodes HTTP pour Commande : Put, Post and Delete
         config.getExposureConfiguration()
-                .forDomainType(Langage.class)
+                .forDomainType(Commande.class)
                 .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)))
                 .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
 
@@ -44,17 +45,24 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
                 .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)))
                 .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
 
-        //Désactivation des méthodes HTTP pour Commande : Put, Post and Delete
+        //Désactivation des méthodes HTTP pour Langage : Put, Post and Delete
         config.getExposureConfiguration()
-                .forDomainType(Commande.class)
+                .forDomainType(Langage.class)
                 .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)))
                 .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
 
-        //Désactivation des méthodes HTTP pour Action : Put, Post and Delete
+        //Désactivation des méthodes HTTP pour Outil : Put, Post and Delete
         config.getExposureConfiguration()
-                .forDomainType(Action.class)
+                .forDomainType(Outil.class)
                 .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)))
                 .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
+
+        //Désactivation des méthodes HTTP pour Utilisation : Put, Post and Delete
+        config.getExposureConfiguration()
+                .forDomainType(Utilisation.class)
+                .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)))
+                .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
+
 
         //call an internal helper method for expose the id
         exposeIds(config);

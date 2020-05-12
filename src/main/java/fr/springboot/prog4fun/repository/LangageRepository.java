@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://prog4fun.s3-website.eu-west-3.amazonaws.com")
 public interface LangageRepository extends JpaRepository<Langage, Integer> {
 
     @Query("SELECT new fr.springboot.prog4fun.dto.DtoUtilisationDeLangage(l.id, l.nom, u.nom) "
