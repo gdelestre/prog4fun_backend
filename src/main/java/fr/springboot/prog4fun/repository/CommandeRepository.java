@@ -16,5 +16,4 @@ public interface CommandeRepository extends JpaRepository<Commande, Integer> {
     @Query("SELECT new fr.springboot.prog4fun.dto.DtoCommandeFonction(c.id, f.nomFonction, c.detail, c.ligneCommande, l.nom) "
             + "FROM Fonction f INNER JOIN f.mesCommandes c INNER JOIN c.commandePourLangage l where c.commandePourLangage.id=?1")
     Page<DtoCommandeFonction> commandeFonctionLangage(@RequestParam("id") Integer id, Pageable pageable);
-
 }

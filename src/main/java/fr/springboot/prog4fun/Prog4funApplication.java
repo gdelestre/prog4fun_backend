@@ -18,5 +18,4 @@ public class Prog4funApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		SpringApplication.run(Prog4funApplication.class, args);
 	}
-
 }

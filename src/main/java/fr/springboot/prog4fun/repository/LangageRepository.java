@@ -14,5 +14,4 @@ public interface LangageRepository extends JpaRepository<Langage, Integer> {
     @Query("SELECT new fr.springboot.prog4fun.dto.DtoUtilisationDeLangage(l.id, l.nom, u.nom) "
             + "FROM Utilisation u INNER JOIN u.mesLangages l ")
     List<DtoUtilisationDeLangage> langageAvecUtilisation();
-
 }

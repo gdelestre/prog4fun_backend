@@ -2,6 +2,7 @@ package fr.springboot.prog4fun.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
+
 import javax.persistence.*;
 import java.io.Serializable;
 

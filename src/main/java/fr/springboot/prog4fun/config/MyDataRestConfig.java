@@ -1,4 +1,5 @@
 package fr.springboot.prog4fun.config;
+
 import fr.springboot.prog4fun.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -18,19 +19,20 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
     private EntityManager entityManager;
 
     @Autowired
-    public MyDataRestConfig(EntityManager entityManager){
-        this.entityManager=entityManager;
+    public MyDataRestConfig(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
         HttpMethod[] theUnsupportedActions = {HttpMethod.PUT, HttpMethod.DELETE, HttpMethod.POST};
+        HttpMethod[] theUnsupportedActionsBis = {HttpMethod.PUT, HttpMethod.DELETE};
 
         //Désactivation des méthodes HTTP pour Action : Put, Post and Delete
         config.getExposureConfiguration()
                 .forDomainType(Action.class)
-                .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)))
-                .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
+                .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActionsBis)))
+                .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActionsBis));
 
 
         //Désactivation des méthodes HTTP pour Commande : Put, Post and Delete
@@ -42,8 +44,8 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         //Désactivation des méthodes HTTP pour Fonction : Put, Post and Delete
         config.getExposureConfiguration()
                 .forDomainType(Fonction.class)
-                .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions)))
-                .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActions));
+                .withItemExposure(((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActionsBis)))
+                .withCollectionExposure((metdata, httpMethods) -> httpMethods.disable(theUnsupportedActionsBis));
 
         //Désactivation des méthodes HTTP pour Langage : Put, Post and Delete
         config.getExposureConfiguration()
@@ -77,7 +79,7 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         List<Class> entityClasses = new ArrayList<>();
 
         //Get the entity types for the entities
-        for(EntityType entityType : entities){
+        for (EntityType entityType : entities) {
             entityClasses.add(entityType.getJavaType());
         }
 

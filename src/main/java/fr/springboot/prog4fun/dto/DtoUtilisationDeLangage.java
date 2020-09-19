@@ -1,17 +1,17 @@
 package fr.springboot.prog4fun.dto;
 
 import lombok.Data;
-import javax.persistence.*;
 
+import javax.persistence.*;
 
 @Entity
 @Data
-@SqlResultSetMapping(name="UtilisationLangage",
-        entities={
-                @EntityResult(entityClass= DtoUtilisationDeLangage.class, fields={
-                        @FieldResult(name="idLangage", column="id_langage"),
-                        @FieldResult(name="nomLangage", column="nom_langage"),
-                        @FieldResult(name="nomUtilisation", column="nom_utilisation")})
+@SqlResultSetMapping(name = "UtilisationLangage",
+        entities = {
+                @EntityResult(entityClass = DtoUtilisationDeLangage.class, fields = {
+                        @FieldResult(name = "idLangage", column = "id_langage"),
+                        @FieldResult(name = "nomLangage", column = "nom_langage"),
+                        @FieldResult(name = "nomUtilisation", column = "nom_utilisation")})
         })
 public class DtoUtilisationDeLangage {
 
@@ -26,5 +26,4 @@ public class DtoUtilisationDeLangage {
         this.nomLangage = nomLangage;
         this.nomUtilisation = nomUtilisation;
     }
-
 }

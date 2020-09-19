@@ -1,6 +1,7 @@
 package fr.springboot.prog4fun.dto;
 
 import lombok.Data;
+
 import javax.persistence.*;
 
 // Cette classe me permet de faire le lien entre la commande, la fonction et l'outil.
@@ -40,5 +41,4 @@ public class DtoActionFonction {
         this.ligneCommande = ligneCommande;
         this.nomOutil = nomOutil;
     }
-
 }

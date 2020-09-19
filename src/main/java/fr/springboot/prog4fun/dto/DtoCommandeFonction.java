@@ -1,6 +1,7 @@
 package fr.springboot.prog4fun.dto;
 
 import lombok.Data;
+
 import javax.persistence.*;
 
 
@@ -8,14 +9,14 @@ import javax.persistence.*;
 // Ceci n'est pas une vraie entité (elle n'est pas reliée à une table).
 @Entity
 @Data
-@SqlResultSetMapping(name="CommandeFonction",
-        entities={
-                @EntityResult(entityClass= DtoCommandeFonction.class, fields={
-                        @FieldResult(name="idCommande", column="id_commande"),
-                        @FieldResult(name="nomCommande", column="nom_commande"),
-                        @FieldResult(name="detailCommande", column="detail_commande"),
-                        @FieldResult(name="ligneCommande", column="ligne_commande"),
-                        @FieldResult(name="nomLangage", column="nom_langage")})
+@SqlResultSetMapping(name = "CommandeFonction",
+        entities = {
+                @EntityResult(entityClass = DtoCommandeFonction.class, fields = {
+                        @FieldResult(name = "idCommande", column = "id_commande"),
+                        @FieldResult(name = "nomCommande", column = "nom_commande"),
+                        @FieldResult(name = "detailCommande", column = "detail_commande"),
+                        @FieldResult(name = "ligneCommande", column = "ligne_commande"),
+                        @FieldResult(name = "nomLangage", column = "nom_langage")})
         })
 public class DtoCommandeFonction {
 
@@ -34,5 +35,4 @@ public class DtoCommandeFonction {
         this.ligneCommande = ligneCommande;
         this.nomLangage = nomLangage;
     }
-
 }

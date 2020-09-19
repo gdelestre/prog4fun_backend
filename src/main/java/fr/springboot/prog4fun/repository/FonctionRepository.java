@@ -13,6 +13,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface FonctionRepository extends JpaRepository<Fonction, Integer> {
 
     @Query("select f from FonctionComplete f where f.nomFonction like %?1%")
-    Page<FonctionComplete> mesFonctions (@RequestParam("keyword") String keyword, Pageable pageable);
-
+    Page<FonctionComplete> mesFonctions(@RequestParam("keyword") String keyword, Pageable pageable);
 }

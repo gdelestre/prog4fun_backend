@@ -16,6 +16,5 @@ public interface ActionRepository extends JpaRepository<Action, Integer> {
     @Query("SELECT new fr.springboot.prog4fun.dto.DtoActionFonction(a.id, f.nomFonction, a.numEtape, a.nomFichier, a.detail, a.ligneCommande, o.nom) "
             + "FROM Fonction f INNER JOIN f.mesActions a INNER JOIN a.actionPourOutil o where a.actionPourOutil.id=?1")
     Page<DtoActionFonction> actionFonctionOutil(@RequestParam("id") Integer id, Pageable pageable);
-
 }
 
